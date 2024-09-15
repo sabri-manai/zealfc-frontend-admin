@@ -1,0 +1,61 @@
+{
+  "version": "1",
+  "cognitoConfig": {
+    "resourceNameTruncated": "zealfc074f714d",
+    "userPoolName": "zealfcadmin",
+    "autoVerifiedAttributes": [
+      "email"
+    ],
+    "mfaConfiguration": "ON",
+    "mfaTypes": [
+      "SMS Text Message",
+      "TOTP"
+    ],
+    "smsAuthenticationMessage": "Your authentication code is {####}",
+    "smsVerificationMessage": "Your verification code is {####}",
+    "emailVerificationSubject": "Your verification code",
+    "emailVerificationMessage": "Your verification code is {####}",
+    "defaultPasswordPolicy": true,
+    "passwordPolicyMinLength": 8,
+    "passwordPolicyCharacters": [
+      "Requires Lowercase",
+      "Requires Uppercase",
+      "Requires Numbers",
+      "Requires Symbols"
+    ],
+    "requiredAttributes": [
+      "email",
+      "family_name",
+      "given_name",
+      "phone_number"
+    ],
+    "aliasAttributes": [],
+    "userpoolClientGenerateSecret": false,
+    "userpoolClientRefreshTokenValidity": 30,
+    "userpoolClientWriteAttributes": [
+      "email"
+    ],
+    "userpoolClientReadAttributes": [
+      "email"
+    ],
+    "userpoolClientLambdaRole": "zealfc074f714d_userpoolclient_lambda_role",
+    "userpoolClientSetAttributes": false,
+    "sharedId": "074f714d",
+    "resourceName": "zealfcadmin",
+    "authSelections": "userPoolOnly",
+    "useDefault": "manual",
+    "usernameAttributes": [
+      "email"
+    ],
+    "userPoolGroups": true,
+    "adminQueries": false,
+    "triggers": {},
+    "hostedUI": false,
+    "userPoolGroupList": [
+      "zealfcadmin"
+    ],
+    "serviceName": "Cognito",
+    "usernameCaseSensitive": false,
+    "useEnabledMfas": true
+  }
+}

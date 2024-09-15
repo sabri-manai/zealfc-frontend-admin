@@ -1,24 +1,46 @@
-import logo from './logo.svg';
+import React, { useState, useEffect } from "react";
+import { BrowserRouter as Router } from "react-router-dom";
+import AdminRoutes from "./routes/AdminRoutes"; // Main admin route component
+import Navbar from "./components/Navbar/Navbar"; // Admin navbar
 import './App.css';
 
 function App() {
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+
+  // Check if the user is authenticated on component mount
+  useEffect(() => {
+    const token = localStorage.getItem("idToken");
+    if (token) {
+      setIsAuthenticated(true);
+    }
+  }, []);
+
+  // Handle user login, store tokens in localStorage
+  const handleLogin = (idToken, accessToken, refreshToken) => {
+    localStorage.setItem("idToken", idToken);
+    localStorage.setItem("accessToken", accessToken);
+    localStorage.setItem("refreshToken", refreshToken);
+    setIsAuthenticated(true);
+  };
+
+  // Handle user logout, clear tokens from localStorage
+  const handleLogout = () => {
+    localStorage.removeItem("idToken");
+    localStorage.removeItem("accessToken");
+    localStorage.removeItem("refreshToken");
+    setIsAuthenticated(false);
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <div className="App">
+        {/* Navbar receives isAuthenticated and handleLogout */}
+        <Navbar isAuthenticated={isAuthenticated} handleLogout={handleLogout} />
+        
+        {/* AdminRoutes receives isAuthenticated and handleLogin */}
+        <AdminRoutes isAuthenticated={isAuthenticated} onLogin={handleLogin} />
+      </div>
+    </Router>
   );
 }
 
