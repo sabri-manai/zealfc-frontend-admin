@@ -1,13 +1,19 @@
 import React from 'react';
 import { Routes, Route, Navigate } from 'react-router-dom';
 import AdminDashboard from '../screens/AdminDashboard/AdminDashboard'; // Main admin dashboard component
+import CreateGame from '../screens/CreateGame/CreateGame'; // Import the CreateGame component
 import AdminLoginRoutes from './AdminLoginRoutes'; // Routes related to login and authentication
 
 function AdminRoutes({ isAuthenticated, onLogin }) {
   return (
     <Routes>
       {/* Main dashboard route */}
-      {isAuthenticated && <Route path="/dashboard" element={<AdminDashboard />} />}
+      {isAuthenticated && (
+        <>
+          <Route path="/dashboard" element={<AdminDashboard />} />
+          <Route path="/create-game" element={<CreateGame />} /> {/* New route for CreateGame */}
+        </>
+      )}
 
       {/* Redirect unauthenticated users to login */}
       {!isAuthenticated && <Route path="/*" element={<AdminLoginRoutes onLogin={onLogin} />} />}

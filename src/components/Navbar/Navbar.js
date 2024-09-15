@@ -43,20 +43,20 @@ function Navbar({ isAuthenticated, handleLogout }) {
         setLoading(false);
         return;
       }
-  
+
       try {
-        const response = await fetch("http://localhost:5000/adminProfile/admin-profile", { // Ensure this matches the route on the server
+        const response = await fetch(`${process.env.REACT_APP_API_URL}/adminProfile/admin-profile`, { // Ensure this matches the route on the server
           method: "GET",
           headers: {
             Authorization: `Bearer ${idToken}`, // Ensure token is correctly formatted
             "Content-Type": "application/json",
           },
         });
-  
+
         if (!response.ok) {
           throw new Error("Failed to fetch user data");
         }
-  
+
         const data = await response.json();
         setUserData(data);
       } catch (err) {
@@ -65,15 +65,14 @@ function Navbar({ isAuthenticated, handleLogout }) {
         setLoading(false);
       }
     };
-  
+
     fetchUserData();
-  
+
     document.addEventListener("mousedown", handleClickOutside);
     return () => {
       document.removeEventListener("mousedown", handleClickOutside);
     };
   }, []);
-  
 
   return (
     <>
@@ -141,6 +140,12 @@ function Navbar({ isAuthenticated, handleLogout }) {
             </div>
             {isAuthenticated && (
               <>
+                <div
+                  className="dropdown-item"
+                  onClick={() => handleItemClick("/create-game")} // New link for CreateGame
+                >
+                  CREATE GAME
+                </div>
                 <div
                   className="dropdown-item"
                   onClick={() => handleItemClick("/profile")}
