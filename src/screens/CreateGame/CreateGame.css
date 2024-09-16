@@ -1,44 +1,78 @@
 .create-game-container {
-    max-width: 600px;
-    margin: 0 auto;
-    padding: 20px;
-    background-color: #f4f4f4;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh; /* Ensure the container takes full viewport height */
+  padding-top: 80px; /* Adjust the top padding to ensure it's not covered by the navbar */
+  background-color: #0e141a;
+}
+
+.create-game-box {
+  background-color: #0e141a;
+  padding: 40px;
+  border-radius: 10px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+  width: 100%;
+  max-width: 500px;
+  text-align: center; /* Align text to the left for form labels and inputs */
+}
+
+h2 {
+  color: #1bc429; /* Green text */
+  font-family: 'Nyxerin', sans-serif;
+  margin-bottom: 30px; /* Adjust margin for better spacing */
+  text-align: center; /* Center the title */
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+label {
+  display: block;
+  margin-bottom: 10px; /* Increase spacing between label and input */
+  font-weight: bold;
+  color: #1bc429; /* Green text */
+}
+
+.input-field,
+select {
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  border: 2px solid #1bc429; /* Green border */
+  border-radius: 5px;
+  background-color: #0f0326;
+  color: white;
+  box-sizing: border-box;
+  margin-bottom: 15px; /* Add margin between input fields */
+}
+
+.input-field::placeholder {
+  color: rgba(255, 255, 255, 0.5); /* Semi-transparent placeholder */
+}
+
+.message {
+  margin-top: 20px;
+  font-family: 'Nyxerin', sans-serif;
+  text-align: center; /* Center the message */
+}
+
+.message.success {
+  color: #1bc429;
+}
+
+.message.error {
+  color: #ff4b4b;
+}
+
+/* Responsive adjustments */
+@media (max-width: 480px) {
+  .create-game-box {
+    width: 90%; /* Adjust width to be responsive */
   }
-  
-  h2 {
-    text-align: center;
+
+  .input-field {
+    font-size: 14px;
   }
-  
-  .form-group {
-    margin-bottom: 15px;
-  }
-  
-  label {
-    display: block;
-    margin-bottom: 5px;
-    font-weight: bold;
-  }
-  
-  input {
-    width: 100%;
-    padding: 8px;
-    box-sizing: border-box;
-  }
-  
-  button {
-    display: block;
-    width: 100%;
-    padding: 10px;
-    background-color: #007bff;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-  }
-  
-  button:hover {
-    background-color: #0056b3;
-  }
-  
+}

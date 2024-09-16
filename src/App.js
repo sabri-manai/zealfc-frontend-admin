@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import { BrowserRouter as Router } from "react-router-dom";
 import AdminRoutes from "./routes/AdminRoutes"; // Main admin route component
 import Navbar from "./components/Navbar/Navbar"; // Admin navbar
+import Footer from "./components/Footer/Footer";
+
 import './App.css';
 
 function App() {
@@ -39,6 +41,8 @@ function App() {
         
         {/* AdminRoutes receives isAuthenticated and handleLogin */}
         <AdminRoutes isAuthenticated={isAuthenticated} onLogin={handleLogin} />
+        <Footer />  {/* Add Footer component */}
+
       </div>
     </Router>
   );
