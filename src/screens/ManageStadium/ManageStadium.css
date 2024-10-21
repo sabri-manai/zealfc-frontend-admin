@@ -1,0 +1,50 @@
+/* ManageStadium/ManageStadium.css */
+.manage-stadium-container {
+    padding-top: 100px;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+  
+  .manage-stadium-container h2 {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .manage-stadium-container form {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .manage-stadium-container .form-group {
+    margin-bottom: 15px;
+  }
+  
+  .manage-stadium-container label {
+    display: block;
+    margin-bottom: 5px;
+  }
+  
+  .manage-stadium-container input,
+  .manage-stadium-container select,
+  .manage-stadium-container textarea {
+    width: 100%;
+    padding: 8px;
+    box-sizing: border-box;
+  }
+  
+  .manage-stadium-container fieldset {
+    border: none;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .manage-stadium-container fieldset label {
+    display: block;
+    margin-bottom: 5px;
+  }
+  
+  .manage-stadium-container button {
+    margin-top: 20px;
+    padding: 10px;
+  }
+  

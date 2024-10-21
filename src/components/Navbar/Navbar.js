@@ -196,9 +196,9 @@ function Navbar({ isAuthenticated, handleLogout }) {
             </div>
             <div
               className="dropdown-item"
-              onClick={() => handleItemClick("/choose-game")}
+              onClick={() => handleItemClick("/manage-stadium")}
             >
-              CHOOSE A GAME
+              ADD STADIUM
             </div>
             {isAuthenticated && (
               <>

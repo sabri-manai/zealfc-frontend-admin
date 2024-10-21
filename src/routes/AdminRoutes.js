@@ -3,6 +3,7 @@ import { Routes, Route, Navigate } from 'react-router-dom';
 import AdminDashboard from '../screens/AdminDashboard/AdminDashboard'; // Main admin dashboard component
 import CreateGame from '../screens/CreateGame/CreateGame'; // Import the CreateGame component
 import AdminLoginRoutes from './AdminLoginRoutes'; // Routes related to login and authentication
+import ManageStadium from '../screens/ManageStadium/ManageStadium';
 
 function AdminRoutes({ isAuthenticated, onLogin }) {
   return (
@@ -12,6 +13,8 @@ function AdminRoutes({ isAuthenticated, onLogin }) {
         <>
           <Route path="/dashboard" element={<AdminDashboard />} />
           <Route path="/create-game" element={<CreateGame />} /> {/* New route for CreateGame */}
+          <Route path="/manage-stadium" element={<ManageStadium />} />
+
         </>
       )}
 
