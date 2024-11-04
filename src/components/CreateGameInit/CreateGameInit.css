@@ -1,0 +1,129 @@
+/* Container holding the entire content */
+.game-info-container {
+    display: flex;
+    justify-content: space-between;
+    color: #00FF00; /* Neon green */
+    font-family: 'Tomorrow', sans-serif;
+    background-color: #000d1c;
+    height: 100vh; /* Full viewport height */
+    width: 100vw; /* Full width of the viewport */
+    box-sizing: border-box;
+    overflow: hidden; /* Hide overflow to prevent scrolling */
+}
+
+.game-image-container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: 
+    linear-gradient(
+        to right, /* Direction of the gradient */
+        rgba(0, 13, 28, 1) 0%,  /* Solid black at the left */
+        rgba(0, 0, 0, 0) 40%    /* Transition to transparent at 40% */
+    
+    ),
+    linear-gradient(
+        to top, /* Vertical gradient */
+        rgba(0, 13, 28, 1) 20%,  /* Solid color at the bottom */
+        rgba(0, 0, 0, 0) 40%    /* Transparent towards the top */
+    );
+    z-index: 2; /* Place it above the image */
+    pointer-events: none; /* Ensure it doesn't interfere with interactions */
+}
+
+
+/* Left side: Adjusted for greeting text */
+.game-info {
+    width: 40%; /* Allocate 40% for the text section */
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Center content vertically */
+    padding-left: 5%; /* Add padding for spacing */
+    z-index: 4; /* Ensure it appears above background effects */
+}
+
+.greeting-text {
+    font-size: 48px; /* Large font size for greeting */
+    margin-bottom: 10px; /* Space below the greeting */
+    font-family: 'Tomorrow', sans-serif;
+
+}
+
+.username-text{
+    padding: 10px;
+    font-family: 'Nyxerin', sans-serif;
+
+}
+.action-prompt {
+    font-size: 24px; /* Font size for the action prompt */
+    margin-bottom: 20px; /* Space below the prompt */
+    font-family: 'Tomorrow', sans-serif;
+
+}
+
+.create-button {
+    background-color: transparent;
+    border: 2px solid #00FF00;
+    color: #00FF00;
+    padding: 12px 30px;
+    font-size: 18px;
+    cursor: pointer;
+    text-transform: uppercase;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.create-button:hover {
+    background-color: #00FF00;
+    color: #000;
+}
+
+/* Right side: Image section */
+.game-image-container {
+    width: 60%; /* Allocate 60% for the image */
+    position: relative;
+    height: 100%; /* Full height of the container */
+    overflow: hidden;
+}
+
+.game-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Cover the container without distorting the image */
+}
+
+.noiseeffect {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 3; /* Overlay the noise effect */
+    background-image: url('../../assets/images/noise_home_background.png'); /* Adjust path if necessary */
+    background-size: cover;
+    opacity: 0.5; /* Opacity for subtle effect */
+}
+
+/* Responsive Design for Mobile */
+@media (max-width: 768px) {
+    .game-info-container {
+        flex-direction: column; /* Stack text and image vertically */
+        height: auto; /* Adjust height for mobile */
+    }
+
+    .game-info {
+        width: 100%; /* Full width for text on mobile */
+        align-items: center; /* Center-align text on mobile */
+        padding: 20px; /* Adjust padding */
+    }
+
+    .create-button {
+        width: 100%; /* Full width button on mobile */
+        padding: 12px;
+    }
+}
