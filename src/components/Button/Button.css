@@ -72,6 +72,16 @@
     color: #1bc429;
 }
 
+/* Selected State */
+.button-container.selected .button-polygon path {
+    stroke: #1bc429;
+    fill: #1bc429; /* Fill with green color */
+}
+
+.button-container.selected .button-text {
+    color: #0f0326; /* Text color changes when selected */
+}
+
 /* Media Queries */
 @media screen and (max-width: 768px) {
     .button-container {

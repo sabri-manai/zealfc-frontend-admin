@@ -1,0 +1,94 @@
+/* Confirmation.css */
+
+.confirmation-layout {
+    display: flex;
+    flex-direction: row-reverse; /* Place the image on the right */
+    align-items: stretch;
+    min-height: 100vh;
+    background-color: #000d1c;
+    color: #00FF00;
+    font-family: 'Tomorrow', sans-serif;
+}
+
+.confirmation-image-container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: 
+    linear-gradient(
+        to right, /* Direction of the gradient */
+        rgba(0, 13, 28, 1) 0%,  /* Solid black at the left */
+        rgba(0, 0, 0, 0) 40%    /* Transition to transparent at 40% */
+    
+    ),
+    linear-gradient(
+        to top, /* Vertical gradient */
+        rgba(0, 13, 28, 1) 20%,  /* Solid color at the bottom */
+        rgba(0, 0, 0, 0) 40%    /* Transparent towards the top */
+    );
+    z-index: 2; /* Place it above the image */
+    pointer-events: none; /* Ensure it doesn't interfere with interactions */
+}
+
+.confirmation-image-container {
+    width: 50%;
+    position: relative;
+}
+
+.confirmation-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    top: 0;
+    right: 0;
+}
+
+.confirmation-content {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center; /* Center the content vertically */
+    padding: 40px;
+    box-sizing: border-box;
+}
+
+.confirmation-time {
+    font-size: 36px;
+    color: #00FF00;
+    margin: 0;
+}
+
+.confirmation-date {
+    font-size: 20px;
+    color: #00FF00;
+    margin-top: 5px;
+}
+
+.confirmation-stadium-name {
+    font-size: 48px;
+    margin: 10px 0;
+    color: #00FF00;
+}
+
+.confirmation-level {
+    font-size: 24px;
+    color: #00FF00;
+    margin: 5px 0;
+}
+
+.confirmation-details {
+    font-size: 18px;
+    line-height: 1.5;
+    color: #00FF00;
+    margin: 20px 0;
+}
+
+.confirmation-buttons {
+    display: flex;
+    gap: 20px;
+    margin-top: 20px;
+}

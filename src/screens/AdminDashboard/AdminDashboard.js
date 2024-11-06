@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import CreateGame from "../CreateGame/CreateGame";
+import './AdminDashboard.css'
+import CreateGameInit from "../../components/CreateGameInit/CreateGameInit";
 
 const Dashboard = () => {
   const [userData, setUserData] = useState(null);
@@ -36,9 +37,8 @@ const Dashboard = () => {
   }, []);
 
   return (
-    <div>
-      {error && <p>{error}</p>}
-      <CreateGame userData={userData} />
+    <div className="admin-dashboard-container">
+      <CreateGameInit userData={userData} />
     </div>
   );
 };

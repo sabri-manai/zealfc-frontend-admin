@@ -1,78 +1,80 @@
-.create-game-container {
+.create-game-layout {
   display: flex;
-  justify-content: center;
+  align-items: stretch;
+  min-height: 100vh;
+  position: relative;
+}
+
+.game-image-two-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 50%;
+  height: 100%;
+  overflow: hidden;
+  z-index: 0;
+}
+
+.game-image-two {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.game-image-two-container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background:
+    linear-gradient(
+      to left,
+      rgba(0, 13, 28, 1) 0%,
+      rgba(0, 0, 0, 0) 40%
+    ),
+    linear-gradient(
+      to top,
+      rgba(0, 13, 28, 1) 20%,
+      rgba(0, 0, 0, 0) 40%
+    );
+  z-index: 1;
+  pointer-events: none;
+}
+
+.noiseeffect {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+  background-image: url('../../assets/images/noise_home_background.png');
+  background-size: cover;
+  opacity: 0.5;
+}
+
+.create-game-content {
+  width: 50%;
+  margin-left: auto;
+  display: flex;
+  flex-direction: column;
   align-items: center;
-  min-height: 100vh; /* Ensure the container takes full viewport height */
-  padding-top: 80px; /* Adjust the top padding to ensure it's not covered by the navbar */
-  background-color: #0e141a;
+  background-color: #000d1c;
+  z-index: 3;
+  min-height: 100vh;
+  padding-top: 50px;
 }
 
-.create-game-box {
-  background-color: #0e141a;
-  padding: 40px;
-  border-radius: 10px;
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+.create-game-content.full-width {
   width: 100%;
-  max-width: 500px;
-  text-align: center; /* Align text to the left for form labels and inputs */
 }
 
-h2 {
-  color: #1bc429; /* Green text */
-  font-family: 'Nyxerin', sans-serif;
-  margin-bottom: 30px; /* Adjust margin for better spacing */
-  text-align: center; /* Center the title */
+.create-game-content.confirmation-phase {
+  padding-top: 0; /* Remove top padding for the confirmation phase */
 }
 
-.form-group {
-  margin-bottom: 20px;
-}
-
-label {
-  display: block;
-  margin-bottom: 10px; /* Increase spacing between label and input */
-  font-weight: bold;
-  color: #1bc429; /* Green text */
-}
-
-.input-field,
-select {
-  width: 100%;
-  padding: 10px;
-  font-size: 16px;
-  border: 2px solid #1bc429; /* Green border */
-  border-radius: 5px;
-  background-color: #0f0326;
-  color: white;
-  box-sizing: border-box;
-  margin-bottom: 15px; /* Add margin between input fields */
-}
-
-.input-field::placeholder {
-  color: rgba(255, 255, 255, 0.5); /* Semi-transparent placeholder */
-}
-
-.message {
-  margin-top: 20px;
-  font-family: 'Nyxerin', sans-serif;
-  text-align: center; /* Center the message */
-}
-
-.message.success {
-  color: #1bc429;
-}
-
-.message.error {
-  color: #ff4b4b;
-}
-
-/* Responsive adjustments */
-@media (max-width: 480px) {
-  .create-game-box {
-    width: 90%; /* Adjust width to be responsive */
-  }
-
-  .input-field {
-    font-size: 14px;
-  }
+.full-width .game-image-two-container {
+  display: none;
 }

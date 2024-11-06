@@ -1,9 +1,12 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import './CreateGameInit.css';
 import CreateGameImage from "../../assets/images/home_background.png"; // Ensure this path is correct
 import Button from "../../components/Button/Button"; // Import your Button component
 
 const CreateGameInit = ({ userData }) => {
+  const navigate = useNavigate();
+
   return (
     <div className="game-info-container">
       {/* Left side for greeting and button */}
@@ -12,13 +15,14 @@ const CreateGameInit = ({ userData }) => {
           Great to see you again,
           <br />
           <div className="username-text">
-
             {userData ? userData.first_name : "Loading..."}!
-            </div>
+          </div>
         </div>
-        <div className="action-prompt">Would you like to host <br/> another game?</div>
-        {/* Use the custom Button component */}
-        <Button text="Create" styleType="default" onClick={() => {}} />
+        <div className="action-prompt">
+          Would you like to host <br /> another game?
+        </div>
+        {/* Navigate to the Create Game process */}
+        <Button text="Create" styleType="default" onClick={() => navigate('/create-game')} />
       </div>
 
       {/* Right side for image */}

@@ -46,6 +46,7 @@
 }
 
 .greeting-text {
+    padding-top: 20px;
     font-size: 48px; /* Large font size for greeting */
     margin-bottom: 10px; /* Space below the greeting */
     font-family: 'Tomorrow', sans-serif;
@@ -53,7 +54,9 @@
 }
 
 .username-text{
-    padding: 10px;
+    padding-top: 10px;
+    padding-bottom: 50px;
+
     font-family: 'Nyxerin', sans-serif;
 
 }

@@ -1,0 +1,38 @@
+.level-selection-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 20px;
+    background-color: #000d1c;
+    min-height: 100vh;
+    color: #00FF00;
+    font-family: 'Tomorrow', sans-serif;
+  }
+  
+  .level-selection-title {
+    font-size: 48px;
+    margin: 0;
+  }
+  
+  .level-selection-date {
+    font-size: 24px;
+    margin: 10px 0;
+  }
+  
+  .level-selection-time {
+    font-size: 32px;
+    margin: 20px 0;
+    color: #00FF00;
+  }
+  
+  .level-picker {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 30px;
+  }
+  
+  .level-buttons {
+    display: flex;
+    gap: 20px;
+  }
+  

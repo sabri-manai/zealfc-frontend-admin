@@ -1,0 +1,78 @@
+.slot-selection-layout {
+    color: #00FF00;
+    font-family: 'Tomorrow', sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 20px;
+    background-color: #000d1c;
+    min-height: 100vh;
+  }
+  
+  .slot-selection-title {
+    font-size: 48px;
+    margin: 0;
+  }
+  
+  .slot-selection-date {
+    font-size: 24px;
+    color: #00FF00;
+    margin-bottom: 20px;
+  }
+  
+  .slot-picker {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    max-width: 600px;
+    margin-bottom: 20px;
+  }
+  
+  .slot-slider {
+    width: 100%;
+    appearance: none;
+    background-color: #00FF00;
+    height: 4px;
+    border-radius: 2px;
+    outline: none;
+    margin: 10px 0;
+  }
+  
+  .slot-slider::-webkit-slider-thumb,
+  .slot-slider::-moz-range-thumb {
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    background-color: #00FF00;
+    border-radius: 50%;
+    cursor: pointer;
+    border: 2px solid #000d1c;
+    transition: background-color 0.3s;
+  }
+  
+  .slot-time-display {
+    font-size: 24px;
+    color: #00FF00;
+    margin-top: 10px;
+  }
+  
+  .slot-labels {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    font-size: 14px;
+    color: #00FF00;
+    margin-top: 10px;
+  }
+  
+  .slot-label {
+    text-align: center;
+    width: 50px;
+  }
+  
+  .slot-buttons {
+    display: flex;
+    gap: 20px;
+  }
+  
