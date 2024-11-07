@@ -2,13 +2,23 @@
 import React from 'react';
 import './Button.css';
 
-function Button({ text, onClick, styleType = 'default', onMouseEnter, onMouseLeave }) {
+function Button({ text, onClick, type = 'button', styleType = 'default', onMouseEnter, onMouseLeave }) {
+    const handleClick = (e) => {
+        if (type === 'submit') {
+            e.preventDefault();
+            const form = e.target.closest('form');
+            if (form) form.dispatchEvent(new Event('submit', { cancelable: true, bubbles: true }));
+        }
+        if (onClick) onClick(e);
+    };
+
     return (
         <div
             className={`button-container ${styleType}`}
-            onClick={onClick}
+            onClick={handleClick}
             onMouseEnter={onMouseEnter}
             onMouseLeave={onMouseLeave}
+            role="button"
         >
             <div className="svg-container">
                 <svg

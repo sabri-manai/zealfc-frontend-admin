@@ -11,7 +11,8 @@ const SlotSelection = () => {
   const selectedSlot = useSelector((state) => state.slotSelection.selectedSlot);
   const selectedDate = useSelector((state) => state.dateSelection.selectedDate);
   const selectedStadium = useSelector((state) => state.stadiumSelection.selectedStadium);
-  const slots = selectedStadium?.availableSlots || [];
+  const slots = selectedStadium?.slots || []; // Use slots directly from selectedStadium
+
   const [sliderValue, setSliderValue] = useState(0);
 
   useEffect(() => {
@@ -37,7 +38,9 @@ const SlotSelection = () => {
             onChange={(e) => setSliderValue(parseInt(e.target.value))}
             className="slot-slider"
           />
-          <div className="slot-time-display">{slots[sliderValue]?.time || ''}</div>
+          <div className="slot-time-display">
+            {`${slots[sliderValue]?.startTime} - ${slots[sliderValue]?.endTime} (${slots[sliderValue]?.dayOfWeek})`}
+          </div>
         </div>
       ) : (
         <p>No available slots for the selected stadium.</p>

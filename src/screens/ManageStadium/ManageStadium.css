@@ -1,50 +1,128 @@
-/* ManageStadium/ManageStadium.css */
 .manage-stadium-container {
-    padding-top: 100px;
-    max-width: 600px;
-    margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
+  padding-top: 60px;
+  background-color: #000d1c;
+  border-radius: 40px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  color: #1bc429;
+  font-family: 'Tomorrow', sans-serif;
+}
+
+.manage-stadium-container h2 {
+  font-size: 1.875rem;
+  font-weight: 400;
+  color: #1bc429;
+  text-transform: uppercase;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.manage-stadium-container form {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding: 20px;
+}
+
+.form-group {
+  margin-bottom: 20px;
+  width: 100%;
+}
+
+.manage-stadium-container label {
+  font-size: 1rem;
+  color: #1bc429;
+  font-weight: 400;
+  text-transform: uppercase;
+  margin-bottom: 5px;
+}
+
+.manage-stadium-container input,
+.manage-stadium-container select,
+.manage-stadium-container textarea {
+  width: 100%;
+  padding: 10px;
+  font-size: 1rem;
+  font-family: 'Tomorrow', sans-serif;
+  color: #ffffff;
+  background-color: #000d1c;
+  border: 1px solid #1bc429;
+  border-radius: 10px;
+  box-sizing: border-box;
+  outline: none;
+  transition: border-color 0.3s ease;
+}
+
+.manage-stadium-container input:focus,
+.manage-stadium-container select:focus,
+.manage-stadium-container textarea:focus {
+  border-color: #28a745;
+}
+
+.host-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  border: 1px solid #1bc429;
+  border-radius: 10px;
+  padding: 10px;
+  background-color: #000d1c;
+  max-height: 200px; /* Limit height if many hosts */
+  overflow-y: auto;
+}
+
+.host-item {
+  display: flex;
+  align-items: center;
+  font-size: 1rem;
+  color: #1bc429;
+}
+
+.host-item input[type="checkbox"] {
+  width: auto;
+  margin-right: 10px;
+  accent-color: #1bc429;
+  cursor: pointer;
+}
+
+
+.button-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.manage-stadium-container button {
+  background: #1bc429;
+  color: #000d1c;
+  border: none;
+  border-radius: 10px;
+  padding: 10px 20px;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.manage-stadium-container button:hover {
+  background: #28a745;
+}
+
+/* Responsive styling for smaller screens */
+@media screen and (max-width: 768px) {
+  .manage-stadium-container {
+      max-width: 90%;
+      padding: 15px;
   }
-  
   .manage-stadium-container h2 {
-    text-align: center;
-    margin-bottom: 20px;
+      font-size: 1.5rem;
   }
-  
-  .manage-stadium-container form {
-    display: flex;
-    flex-direction: column;
-  }
-  
-  .manage-stadium-container .form-group {
-    margin-bottom: 15px;
-  }
-  
   .manage-stadium-container label {
-    display: block;
-    margin-bottom: 5px;
+      font-size: 0.875rem;
   }
-  
-  .manage-stadium-container input,
-  .manage-stadium-container select,
-  .manage-stadium-container textarea {
-    width: 100%;
-    padding: 8px;
-    box-sizing: border-box;
-  }
-  
-  .manage-stadium-container fieldset {
-    border: none;
-    margin: 0;
-    padding: 0;
-  }
-  
-  .manage-stadium-container fieldset label {
-    display: block;
-    margin-bottom: 5px;
-  }
-  
-  .manage-stadium-container button {
-    margin-top: 20px;
-    padding: 10px;
-  }
-  
+}
