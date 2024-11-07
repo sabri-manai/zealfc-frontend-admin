@@ -17,7 +17,7 @@ const LevelSelection = () => {
 
   return (
     <div className="level-selection-container">
-      <h2>CHOOSE GAME LEVEL</h2>
+      <p className='level-selection-title'>CHOOSE GAME LEVEL</p>
       <div className="level-picker">
         {levels.map((level) => (
           <Button

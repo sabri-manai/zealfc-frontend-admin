@@ -2,72 +2,46 @@
 .game-info-container {
     display: flex;
     justify-content: space-between;
-    color: #00FF00; /* Neon green */
+    color: #00FF00;
     font-family: 'Tomorrow', sans-serif;
     background-color: #000d1c;
     height: 100vh; /* Full viewport height */
-    width: 100vw; /* Full width of the viewport */
+    width: 100vw;
     box-sizing: border-box;
     overflow: hidden; /* Hide overflow to prevent scrolling */
-}
-
-.game-image-container::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: 
-    linear-gradient(
-        to right, /* Direction of the gradient */
-        rgba(0, 13, 28, 1) 0%,  /* Solid black at the left */
-        rgba(0, 0, 0, 0) 40%    /* Transition to transparent at 40% */
-    
-    ),
-    linear-gradient(
-        to top, /* Vertical gradient */
-        rgba(0, 13, 28, 1) 20%,  /* Solid color at the bottom */
-        rgba(0, 0, 0, 0) 40%    /* Transparent towards the top */
-    );
-    z-index: 2; /* Place it above the image */
-    pointer-events: none; /* Ensure it doesn't interfere with interactions */
-}
-
-
-/* Left side: Adjusted for greeting text */
-.game-info {
-    width: 40%; /* Allocate 40% for the text section */
+    position: relative; /* Ensure that child elements can use absolute positioning */
+  }
+  
+  /* Left side: Adjusted for greeting text */
+  .game-info {
+    width: 40%;
     display: flex;
     flex-direction: column;
-    justify-content: center; /* Center content vertically */
-    padding-left: 5%; /* Add padding for spacing */
+    justify-content: center;
+    padding-left: 5%;
     z-index: 4; /* Ensure it appears above background effects */
-}
-
-.greeting-text {
+  }
+  
+  .greeting-text {
     padding-top: 20px;
-    font-size: 48px; /* Large font size for greeting */
-    margin-bottom: 10px; /* Space below the greeting */
+    font-size: 48px;
+    margin-bottom: 10px;
     font-family: 'Tomorrow', sans-serif;
-
-}
-
-.username-text{
+  }
+  
+  .username-text {
     padding-top: 10px;
     padding-bottom: 50px;
-
     font-family: 'Nyxerin', sans-serif;
-
-}
-.action-prompt {
-    font-size: 24px; /* Font size for the action prompt */
-    margin-bottom: 20px; /* Space below the prompt */
+  }
+  
+  .action-prompt {
+    font-size: 24px;
+    margin-bottom: 20px;
     font-family: 'Tomorrow', sans-serif;
-
-}
-
-.create-button {
+  }
+  
+  .create-button {
     background-color: transparent;
     border: 2px solid #00FF00;
     color: #00FF00;
@@ -76,57 +50,86 @@
     cursor: pointer;
     text-transform: uppercase;
     transition: background-color 0.3s, color 0.3s;
-}
-
-.create-button:hover {
+  }
+  
+  .create-button:hover {
     background-color: #00FF00;
     color: #000;
-}
-
-/* Right side: Image section */
-.game-image-container {
-    width: 60%; /* Allocate 60% for the image */
+  }
+  
+  /* Right side: Image section */
+  .game-image-container {
+    width: 60%;
     position: relative;
-    height: 100%; /* Full height of the container */
+    height: 100%;
     overflow: hidden;
-}
-
-.game-image {
-    position: absolute;
-    top: 0;
-    left: 0;
+    display: flex;
+    align-items: center; /* Center image vertically */
+    justify-content: center; /* Center image horizontally */
+  }
+  
+  .game-image {
     width: 100%;
     height: 100%;
     object-fit: cover; /* Cover the container without distorting the image */
-}
-
-.noiseeffect {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1; /* Place behind overlays */
+  }
+  
+  /* Gradient Overlay */
+  .game-image-container::before {
+    content: '';
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    z-index: 3; /* Overlay the noise effect */
-    background-image: url('../../assets/images/noise_home_background.png'); /* Adjust path if necessary */
+    background: 
+      linear-gradient(
+        to right,
+        rgba(0, 13, 28, 1) 0%,  /* Solid black at the left */
+        rgba(0, 0, 0, 0) 40%    /* Transition to transparent at 40% */
+      ),
+      linear-gradient(
+        to top,
+        rgba(0, 13, 28, 1) 20%, /* Solid color at the bottom */
+        rgba(0, 0, 0, 0) 40%    /* Transparent towards the top */
+      );
+    z-index: 2; /* Place above the image but below the noise effect */
+    pointer-events: none; /* Ensure it doesn't interfere with interactions */
+  }
+  
+  /* Noise Effect Overlay */
+  .noiseeffect {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 3; /* Overlay the noise effect above the gradient */
+    background-image: url('../../assets/images/noise_home_background.png');
     background-size: cover;
     opacity: 0.5; /* Opacity for subtle effect */
-}
-
-/* Responsive Design for Mobile */
-@media (max-width: 768px) {
+  }
+  
+  /* Responsive Design for Mobile */
+  @media (max-width: 768px) {
     .game-info-container {
-        flex-direction: column; /* Stack text and image vertically */
-        height: auto; /* Adjust height for mobile */
+      flex-direction: column;
+      height: auto;
     }
-
+  
     .game-info {
-        width: 100%; /* Full width for text on mobile */
-        align-items: center; /* Center-align text on mobile */
-        padding: 20px; /* Adjust padding */
+      width: 100%;
+      align-items: center;
+      padding: 20px;
     }
-
+  
     .create-button {
-        width: 100%; /* Full width button on mobile */
-        padding: 12px;
+      width: 100%;
+      padding: 12px;
     }
-}
+  }
+  

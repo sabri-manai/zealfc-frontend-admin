@@ -1,4 +1,3 @@
-// src/components/GameCreation/StadiumSelection.js
 import React from 'react';
 import { useDispatch } from 'react-redux';
 import { setSelectedStadium } from '../../store/slices/stadiumSelectionSlice';
@@ -16,22 +15,31 @@ const StadiumSelection = ({ stadiums }) => {
 
   return (
     <div className="stadium-selection-container">
-      <h2 className="stadium-selection-title">CHOOSE A STADIUM</h2>
+      <p className="stadium-selection-title">CHOOSE A STADIUM</p>
       <div className="stadium-list">
-        {stadiums.map((stadium) => (
-          <div
-            key={stadium.id}
-            className="stadium-card-wrapper"
-            onClick={() => handleSelectStadium(stadium)}
-          >
-            <GameCard
-              imageSrc={stadium.image}
-              gameName="CARMEN"
-              gameSubtitle={stadium.address}
-              gameId={stadium.id}
-            />
-          </div>
-        ))}
+        {stadiums.map((stadium) => {
+          const firstSlot = stadium.slots && stadium.slots[0];
+          const dayOfWeek = firstSlot ? firstSlot.dayOfWeek : "Open Days Not Available";
+          const capacity = stadium.capacity;
+
+          return (
+            <div
+              key={stadium.id}
+              className="stadium-card-wrapper"
+              onClick={() => handleSelectStadium(stadium)}
+            >
+              <GameCard
+                imageSrc={stadium.image}
+                name={stadium.name}
+                subtitle={stadium.address}
+                dayOrDate={dayOfWeek}
+                timeOrCapacity={capacity}
+                id={stadium.id}
+                isGame={false}
+              />
+            </div>
+          );
+        })}
       </div>
     </div>
   );

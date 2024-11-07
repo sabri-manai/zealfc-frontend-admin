@@ -21,15 +21,24 @@ const SlotSelection = () => {
     }
   }, [sliderValue, slots, dispatch]);
 
+  // Time labels based on the given range (assuming 14:00 - 21:00 as shown in the image)
+  const timeLabels = ['14:00', '15:00', '16:00', '17:00', '18:00', '19:00', '20:00', '21:00'];
+
   return (
     <div className="slot-selection-layout">
-      <h2 className="slot-selection-title">{selectedStadium?.name || 'Select a Stadium'}</h2>
+      <p className="slot-selection-title">{selectedStadium?.name || 'Select a Stadium'}</p>
       <p className="slot-selection-date">
         {selectedDate ? new Date(selectedDate).toLocaleDateString('en-US', { month: 'long', day: 'numeric' }) : 'Select a date'}
       </p>
 
       {slots.length > 0 ? (
         <div className="slot-picker">
+          {/* Time Display Above Slider */}
+          <div className="slot-time-display">
+            {`${slots[sliderValue]?.startTime} - ${slots[sliderValue]?.endTime}`}
+          </div>
+
+          {/* Slider */}
           <input
             type="range"
             min="0"
@@ -38,8 +47,21 @@ const SlotSelection = () => {
             onChange={(e) => setSliderValue(parseInt(e.target.value))}
             className="slot-slider"
           />
-          <div className="slot-time-display">
-            {`${slots[sliderValue]?.startTime} - ${slots[sliderValue]?.endTime} (${slots[sliderValue]?.dayOfWeek})`}
+
+          {/* Vertical Line Indicators */}
+          {/* <div className="slot-indicators">
+            {timeLabels.map((_, index) => (
+              <div key={index} className="slot-indicator" />
+            ))}
+          </div> */}
+
+          {/* Time Labels Below Slider */}
+          <div className="slot-labels">
+            {timeLabels.map((time, index) => (
+              <div key={index} className="slot-label">
+                {time}
+              </div>
+            ))}
           </div>
         </div>
       ) : (

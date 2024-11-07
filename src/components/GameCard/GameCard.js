@@ -2,22 +2,38 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import "./GameCard.css";
-import CreateGameImageTwo from '../../assets/images/turia.png';
+import DefaultImage from '../../assets/images/turia.png';
 
-export const GameCard = ({ imageSrc, gameName, gameSubtitle, gameDay, gameId, className }) => {
+export const GameCard = ({ 
+  imageSrc, 
+  name, 
+  subtitle, 
+  dayOrDate, 
+  timeOrCapacity, 
+  id, 
+  isGame = false, 
+  className 
+}) => {
   const navigate = useNavigate();
   
   const handleClick = () => {
-    if (gameId) navigate(`/games/${gameId}`);
+    if (id) navigate(isGame ? `/games/${id}` : `/stadiums/${id}`);
   };
 
-  const formatGameDay = (dateString) => {
-    if (!dateString) return "Date not available";
-    const date = new Date(dateString);
-    if (isNaN(date)) return "Invalid Date";
-    const dayOfWeek = date.toLocaleDateString('en-US', { weekday: 'long' });
-    const timeFormatted = date.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' });
-    return `${dayOfWeek}, ${timeFormatted}`;
+  const formatGameDayOrDate = (dayOrDate, timeOrCapacity) => {
+    if (!dayOrDate) return isGame ? "Date not available" : "Capacity not specified";
+    
+    if (isGame) {
+      const formattedDate = new Date(dayOrDate).toLocaleDateString('en-US', {
+        weekday: 'long',
+        month: 'long',
+        day: 'numeric',
+      });
+      const formattedTime = timeOrCapacity ? new Date(`1970-01-01T${timeOrCapacity}`).toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' }) : '';
+      return `${formattedDate}${formattedTime ? `, ${formattedTime}` : ''}`;
+    } else {
+      return `${dayOrDate} - Capacity: ${timeOrCapacity || "N/A"}`;
+    }
   };
 
   return (
@@ -25,18 +41,20 @@ export const GameCard = ({ imageSrc, gameName, gameSubtitle, gameDay, gameId, cl
       <div className="game-card">
         <div className="image-wrapper">
           <img 
-            src={imageSrc || CreateGameImageTwo} 
-            alt={`${gameName || 'Unknown Game'} Background`} 
+            src={imageSrc || DefaultImage} 
+            alt={`${name || 'Unknown'} Background`} 
             className="card-image" 
           />
           <div className="overlay-gradient"></div>
           <div className="overlay-content">
-            <div className="game-name">{gameName || 'Unknown Game'}</div>
-            <div className="game-subtitle">{gameSubtitle || 'Unknown Type'}</div>
+            <div className="game-name">{name || (isGame ? 'Unknown Game' : 'Unknown Stadium')}</div>
+            <div className="game-subtitle">{subtitle || 'Details unavailable'}</div>
           </div>
         </div>
       </div>
-      <div className="game-day">{formatGameDay(gameDay)}</div>
+      <div className="game-day">{formatGameDayOrDate(dayOrDate, timeOrCapacity)}</div>
     </div>
   );
 };
+
+export default GameCard;

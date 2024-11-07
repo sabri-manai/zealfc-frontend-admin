@@ -64,3 +64,8 @@
     margin-top: 20px;
   }
   
+  .date-item.disabled {
+    color: #0F6216;
+    pointer-events: none;
+  }
+  

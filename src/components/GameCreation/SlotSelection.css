@@ -1,78 +1,125 @@
+/* Slot Selection Layout */
 .slot-selection-layout {
-    color: #00FF00;
-    font-family: 'Tomorrow', sans-serif;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding-top: 20px;
-    background-color: #000d1c;
-    min-height: 100vh;
-  }
-  
-  .slot-selection-title {
-    font-size: 48px;
-    margin: 0;
-  }
-  
-  .slot-selection-date {
-    font-size: 24px;
-    color: #00FF00;
-    margin-bottom: 20px;
-  }
-  
-  .slot-picker {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 100%;
-    max-width: 600px;
-    margin-bottom: 20px;
-  }
-  
-  .slot-slider {
-    width: 100%;
-    appearance: none;
-    background-color: #00FF00;
-    height: 4px;
-    border-radius: 2px;
-    outline: none;
-    margin: 10px 0;
-  }
-  
-  .slot-slider::-webkit-slider-thumb,
-  .slot-slider::-moz-range-thumb {
-    appearance: none;
-    width: 20px;
-    height: 20px;
-    background-color: #00FF00;
-    border-radius: 50%;
-    cursor: pointer;
-    border: 2px solid #000d1c;
-    transition: background-color 0.3s;
-  }
-  
-  .slot-time-display {
-    font-size: 24px;
-    color: #00FF00;
-    margin-top: 10px;
-  }
-  
-  .slot-labels {
-    display: flex;
-    justify-content: space-between;
-    width: 100%;
-    font-size: 14px;
-    color: #00FF00;
-    margin-top: 10px;
-  }
-  
-  .slot-label {
-    text-align: center;
-    width: 50px;
-  }
-  
-  .slot-buttons {
-    display: flex;
-    gap: 20px;
-  }
-  
+  color: #00FF00;
+  font-family: 'Tomorrow', sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 60px;
+  background-color: #000d1c;
+  min-height: 100vh;
+}
+
+/* Title */
+.slot-selection-title {
+  font-size: 3rem;
+  margin: 0;
+  font-family: 'nyxerin', sans-serif;
+}
+
+/* Selected Date Display */
+.slot-selection-date {
+  font-size: 24px;
+  color: #00FF00;
+  margin-bottom: 20px;
+}
+
+/* Slot Picker */
+.slot-picker {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  max-width: 600px;
+  position: relative;
+  margin-bottom: 20px;
+}
+
+/* Transparent Slider Line */
+.slot-slider {
+  width: 100%;
+  height: 1px;
+  appearance: none;
+  background-color: #00FF00; /* No line */
+  outline: none;
+  margin: 10px 0;
+  position: relative;
+  z-index: 1;
+}
+
+/* Green Rectangular Thumb */
+.slot-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 40px;
+  height: 16px;
+  background-color: #00FF00;
+  cursor: pointer;
+  border-radius: 2px;
+  box-shadow: 0 0 2px #000d1c;
+  border: none;
+  transition: transform 0.2s;
+}
+
+.slot-slider::-moz-range-thumb {
+  width: 40px;
+  height: 16px;
+  background-color: #00FF00;
+  cursor: pointer;
+  border-radius: 2px;
+  box-shadow: 0 0 2px #000d1c;
+  border: none;
+  transition: transform 0.2s;
+}
+
+.slot-slider::-webkit-slider-thumb:hover,
+.slot-slider::-moz-range-thumb:hover {
+  transform: scale(1.2);
+}
+
+/* Time Display Above Slider */
+.slot-time-display {
+  font-size: 24px;
+  color: #00FF00;
+  margin-bottom: 10px;
+}
+
+/* Slot Time Labels */
+.slot-labels {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  font-size: 14px;
+  color: #00FF00;
+  margin-top: 10px;
+  position: relative;
+}
+
+/* Slot Labels */
+.slot-label {
+  text-align: center;
+  width: 50px;
+}
+
+/* Vertical Line Indicators (Replacing the slider line) */
+.slot-indicators {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  position: absolute;
+  top: 22px; /* Adjust this to align with the original slider line position */
+  z-index: 1;
+}
+
+.slot-indicator {
+  height: 12px; /* Set height to simulate the vertical lines */
+  width: 2px;
+  background-color: #00FF00;
+}
+
+/* Button Container */
+.slot-buttons {
+  display: flex;
+  gap: 20px;
+  margin-top: 20px;
+}

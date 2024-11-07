@@ -16,6 +16,16 @@ const DateSelection = () => {
   const daysInMonth = new Date(currentYear, currentMonth + 1, 0).getDate();
   const dates = Array.from({ length: daysInMonth }, (_, i) => i + 1);
 
+  // Get available dates based on slots
+  const availableDates = selectedStadium?.slots
+    ? selectedStadium.slots
+        .map((slot) => {
+          const slotDate = new Date(slot.startDate);
+          return slotDate.getMonth() === currentMonth ? slotDate.getDate() : null;
+        })
+        .filter((day) => day !== null) // Filter out nulls for dates outside the current month
+    : [];
+
   const handleDateSelect = (day) => {
     const selected = new Date(currentYear, currentMonth, day);
     dispatch(setSelectedDate(selected.toDateString()));
@@ -33,15 +43,18 @@ const DateSelection = () => {
       </div>
       
       <div className="date-grid">
-        {dates.map((day) => (
-          <div
-            key={day}
-            className={`date-item ${selectedDate === new Date(currentYear, currentMonth, day).toDateString() ? 'selected' : ''}`}
-            onClick={() => handleDateSelect(day)}
-          >
-            {day}
-          </div>
-        ))}
+        {dates.map((day) => {
+          const isAvailable = availableDates.includes(day);
+          return (
+            <div
+              key={day}
+              className={`date-item ${isAvailable ? '' : 'disabled'} ${selectedDate === new Date(currentYear, currentMonth, day).toDateString() ? 'selected' : ''}`}
+              onClick={() => isAvailable && handleDateSelect(day)}
+            >
+              {day}
+            </div>
+          );
+        })}
       </div>
       
       <div className="date-selection-footer">
