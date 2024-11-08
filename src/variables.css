@@ -1,0 +1,20 @@
+/* variables.css */
+
+:root {
+    --primary-color: #00FF00;
+    --background-color: #000d1c;
+    --text-color: #FFFFFF;
+    --font-primary: 'Tomorrow', sans-serif;
+    --font-header: 'Nyxerin', sans-serif;
+  
+    --font-size-h1: 48px;
+    --font-size-h2: 36px;
+    --font-size-section-title: 32px;
+    --font-size-body: 18px;
+    --font-size-small: 14px;
+  
+    --spacing-standard: 20px;
+    --spacing-large: 40px;
+    --max-width-container: 1200px;
+  }
+  

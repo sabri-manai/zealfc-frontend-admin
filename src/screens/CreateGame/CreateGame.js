@@ -40,15 +40,15 @@ function CreateGame() {
       <div className={`create-game-content ${phase === 1 || phase === 5 ? 'full-width' : ''}`}>
         {phase === 1 && <StadiumSelection stadiums={stadiums} />}
         {phase === 2 && <DateSelection />}
-        {phase === 3 && <SlotSelection slots={selectedStadium?.availableSlots || []} />}
+        {phase === 3 && <SlotSelection slots={selectedStadium?.slots || []} />}
         {phase === 4 && <LevelSelection />}
         {phase === 5 && (
-          <Confirmation
+            <Confirmation
             gameData={{
               stadium: selectedStadium,
               date: selectedDate,
               slot: selectedSlot,
-              level: selectedLevel
+              level: selectedLevel,
             }}
           />
         )}

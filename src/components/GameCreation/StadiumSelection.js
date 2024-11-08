@@ -24,7 +24,7 @@ const StadiumSelection = ({ stadiums }) => {
 
           return (
             <div
-              key={stadium.id}
+              key={stadium.name}
               className="stadium-card-wrapper"
               onClick={() => handleSelectStadium(stadium)}
             >

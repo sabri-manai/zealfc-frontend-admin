@@ -1,4 +1,4 @@
-// src/components/GameCreation/SlotSelection.js
+// SlotSelection.js
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { setSelectedSlot } from '../../store/slices/slotSelectionSlice';
@@ -6,29 +6,50 @@ import { nextPhase, previousPhase } from '../../store/slices/gamePhaseSlice';
 import './SlotSelection.css';
 import Button from '../../components/Button/Button';
 
-const SlotSelection = () => {
+const SlotSelection = ({ slots }) => {
   const dispatch = useDispatch();
   const selectedSlot = useSelector((state) => state.slotSelection.selectedSlot);
   const selectedDate = useSelector((state) => state.dateSelection.selectedDate);
   const selectedStadium = useSelector((state) => state.stadiumSelection.selectedStadium);
-  const slots = selectedStadium?.slots || []; // Use slots directly from selectedStadium
 
   const [sliderValue, setSliderValue] = useState(0);
-
+  useEffect(() => {
+    console.log('Selected Stadium:', selectedStadium);
+  }, [selectedStadium]);
+  
   useEffect(() => {
     if (slots.length > 0) {
       dispatch(setSelectedSlot(slots[sliderValue]));
     }
   }, [sliderValue, slots, dispatch]);
 
-  // Time labels based on the given range (assuming 14:00 - 21:00 as shown in the image)
-  const timeLabels = ['14:00', '15:00', '16:00', '17:00', '18:00', '19:00', '20:00', '21:00'];
+  // Helper function to convert time string to minutes
+  const timeStringToMinutes = (timeStr) => {
+    const [hours, minutes] = timeStr.split(':').map(Number);
+    return hours * 60 + minutes;
+  };
+
+  // Get earliest start time and latest end time
+  const minStartTime = Math.min(...slots.map((slot) => timeStringToMinutes(slot.startTime)));
+  const maxEndTime = Math.max(...slots.map((slot) => timeStringToMinutes(slot.endTime)));
+
+  // Generate time labels at hourly intervals
+  const startHour = Math.floor(minStartTime / 60);
+  const endHour = Math.ceil(maxEndTime / 60);
+
+  const timeLabels = [];
+  for (let hour = startHour; hour <= endHour; hour++) {
+    const timeLabel = `${hour.toString().padStart(2, '0')}:00`;
+    timeLabels.push(timeLabel);
+  }
 
   return (
     <div className="slot-selection-layout">
       <p className="slot-selection-title">{selectedStadium?.name || 'Select a Stadium'}</p>
       <p className="slot-selection-date">
-        {selectedDate ? new Date(selectedDate).toLocaleDateString('en-US', { month: 'long', day: 'numeric' }) : 'Select a date'}
+        {selectedDate
+          ? new Date(selectedDate).toLocaleDateString('en-US', { month: 'long', day: 'numeric' })
+          : 'Select a date'}
       </p>
 
       {slots.length > 0 ? (
@@ -47,13 +68,6 @@ const SlotSelection = () => {
             onChange={(e) => setSliderValue(parseInt(e.target.value))}
             className="slot-slider"
           />
-
-          {/* Vertical Line Indicators */}
-          {/* <div className="slot-indicators">
-            {timeLabels.map((_, index) => (
-              <div key={index} className="slot-indicator" />
-            ))}
-          </div> */}
 
           {/* Time Labels Below Slider */}
           <div className="slot-labels">

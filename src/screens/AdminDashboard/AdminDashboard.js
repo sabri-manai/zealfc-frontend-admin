@@ -1,7 +1,9 @@
+// src/screens/AdminDashboard/AdminDashboard.js
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import './AdminDashboard.css'
+import './AdminDashboard.css';
 import CreateGameInit from "../../components/CreateGameInit/CreateGameInit";
+import UpcomingGames from "../../components/UpcomingGames/UpcomingGames";
 
 const Dashboard = () => {
   const [userData, setUserData] = useState(null);
@@ -39,6 +41,7 @@ const Dashboard = () => {
   return (
     <div className="admin-dashboard-container">
       <CreateGameInit userData={userData} />
+      <UpcomingGames />
     </div>
   );
 };

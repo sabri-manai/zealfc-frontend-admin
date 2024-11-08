@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import './UpcomingGames.css';
+import GameCard from '../GameCard/GameCard'; // Import the GameCard component
 
 const UpcomingGames = () => {
   const [gamesByDate, setGamesByDate] = useState({});
@@ -44,14 +45,17 @@ const UpcomingGames = () => {
           <h3 className="date-header">{date}</h3>
           <div className="games-row">
             {gamesByDate[date].map((game) => (
-              <div key={game._id} className="game-card">
-                <img src={game.stadiumImage} alt={game.stadium} className="game-image" />
-                <div className="game-info">
-                  <h4 className="game-stadium">{game.stadium}</h4>
-                  <p className="game-level">{game.level}</p>
-                  <p className="game-time">{new Date(game.date).toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit' })}</p>
-                </div>
-              </div>
+              <GameCard
+                key={game._id}
+                imageSrc={game.stadium?.image}
+                name={game.stadium?.name}
+                subtitle={game.type}
+                dayOrDate={game.date}
+                timeOrCapacity={game.time}
+                id={game._id}
+                isGame={true}
+                className="game-card-wrapper"
+              />
             ))}
           </div>
         </div>

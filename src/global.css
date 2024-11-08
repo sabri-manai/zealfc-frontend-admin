@@ -1,0 +1,113 @@
+/* global.css */
+
+/* Reset default styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  /* Typography */
+  body {
+    font-family: var(--font-primary);
+    color: var(--text-color);
+    background-color: var(--background-color);
+  }
+  
+  h1 {
+    font-size: var(--font-size-h1);
+    font-family: var(--font-header);
+    color: var(--primary-color);
+  }
+  
+  h2 {
+    font-size: var(--font-size-h2);
+    font-family: var(--font-header);
+    color: var(--primary-color);
+  }
+  
+  h3 {
+    font-size: var(--font-size-section-title);
+    font-family: var(--font-header);
+    color: var(--primary-color);
+  }
+  
+  p, span, li, a {
+    font-size: var(--font-size-body);
+    font-family: var(--font-primary);
+    color: var(--text-color);
+  }
+  
+  .small-text {
+    font-size: var(--font-size-small);
+  }
+  
+  /* Containers */
+  .container {
+    max-width: var(--max-width-container);
+    margin: 0 auto;
+    padding: 0 var(--spacing-standard);
+  }
+  
+  .section {
+    padding: var(--spacing-large) 0;
+  }
+  
+  /* Buttons */
+  .button {
+    background-color: transparent;
+    border: 2px solid var(--primary-color);
+    color: var(--primary-color);
+    padding: 12px 30px;
+    font-size: var(--font-size-body);
+    cursor: pointer;
+    text-transform: uppercase;
+    transition: background-color 0.3s, color 0.3s;
+    font-family: var(--font-primary);
+  }
+  
+  .button:hover {
+    background-color: var(--primary-color);
+    color: var(--background-color);
+  }
+  
+  /* Utility Classes */
+  .text-center {
+    text-align: center;
+  }
+  
+  .mt-20 {
+    margin-top: var(--spacing-standard);
+  }
+  
+  .mb-20 {
+    margin-bottom: var(--spacing-standard);
+  }
+  
+  .mt-40 {
+    margin-top: var(--spacing-large);
+  }
+  
+  .mb-40 {
+    margin-bottom: var(--spacing-large);
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    h1 {
+      font-size: 36px;
+    }
+  
+    h2 {
+      font-size: 28px;
+    }
+  
+    h3 {
+      font-size: 24px;
+    }
+  
+    .container {
+      padding: 0 var(--spacing-standard);
+    }
+  }
+  
