@@ -1,6 +1,5 @@
 // src/components/GameCreation/CreateGame.js
-// src/components/GameCreation/CreateGame.js
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { loadStadiums } from '../../store/slices/stadiumSlice';
 import './CreateGame.css';
@@ -37,13 +36,17 @@ function CreateGame() {
         </div>
       )}
 
-      <div className={`create-game-content ${phase === 1 || phase === 5 ? 'full-width' : ''}`}>
+      <div
+        className={`create-game-content ${phase === 1 || phase === 5 ? 'full-width' : ''} ${
+          phase === 5 ? 'confirmation-phase' : ''
+        }`}
+      >
         {phase === 1 && <StadiumSelection stadiums={stadiums} />}
         {phase === 2 && <DateSelection />}
         {phase === 3 && <SlotSelection slots={selectedStadium?.slots || []} />}
         {phase === 4 && <LevelSelection />}
         {phase === 5 && (
-            <Confirmation
+          <Confirmation
             gameData={{
               stadium: selectedStadium,
               date: selectedDate,

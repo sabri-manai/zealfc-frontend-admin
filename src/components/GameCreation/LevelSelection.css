@@ -28,12 +28,10 @@
   
   .level-picker {
     display: flex;
-    gap: 20px;
     margin-bottom: 30px;
   }
   
   .level-buttons {
     display: flex;
-    gap: 20px;
   }
   

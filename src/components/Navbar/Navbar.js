@@ -190,12 +190,6 @@ function Navbar({ isAuthenticated, handleLogout }) {
             </div>
             <div
               className="dropdown-item"
-              onClick={() => handleItemClick("/about")}
-            >
-              ABOUT US
-            </div>
-            <div
-              className="dropdown-item"
               onClick={() => handleItemClick("/manage-stadium")}
             >
               ADD STADIUM

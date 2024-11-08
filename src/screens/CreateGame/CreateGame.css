@@ -68,13 +68,15 @@
 }
 
 .create-game-content.full-width {
+  top: 0;
   width: 100%;
 }
 
 .create-game-content.confirmation-phase {
-  padding-top: 0; /* Remove top padding for the confirmation phase */
+  padding-top: 0;
 }
 
 .full-width .game-image-two-container {
+  top: 0;
   display: none;
 }

@@ -3,7 +3,11 @@ import React from 'react';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
-import { previousPhase } from '../../store/slices/gamePhaseSlice';
+import { previousPhase, resetPhase } from '../../store/slices/gamePhaseSlice';
+import { resetSelectedStadium } from '../../store/slices/stadiumSelectionSlice';
+import { resetSelectedDate } from '../../store/slices/dateSelectionSlice';
+import { resetSelectedSlot } from '../../store/slices/slotSelectionSlice';
+import { resetSelectedLevel } from '../../store/slices/levelSelectionSlice';
 import './Confirmation.css';
 import Button from '../../components/Button/Button';
 import CreateGameImageTwo from '../../assets/images/turia.png';
@@ -23,7 +27,7 @@ const Confirmation = ({ gameData }) => {
     const duration = calculateDuration(gameData.slot.startTime, gameData.slot.endTime);
 
     const dataToSubmit = {
-      stadiumId: gameData.stadium._id, // Send stadiumId
+      stadiumId: gameData.stadium._id,
       host: gameData.stadium.hosts[0],
       date: gameData.date,
       time: gameData.slot.startTime,
@@ -50,6 +54,14 @@ const Confirmation = ({ gameData }) => {
         }
       );
       alert("Game Created Successfully!");
+
+      // Reset the states here
+      dispatch(resetSelectedStadium());
+      dispatch(resetSelectedDate());
+      dispatch(resetSelectedSlot());
+      dispatch(resetSelectedLevel());
+      dispatch(resetPhase());
+
       navigate("/dashboard");
     } catch (error) {
       console.error("Error creating game:", error);
@@ -64,7 +76,11 @@ const Confirmation = ({ gameData }) => {
   return (
     <div className="confirmation-layout">
       <div className="confirmation-image-container">
-        <img src={gameData.stadium?.image || CreateGameImageTwo} alt="Stadium" className="confirmation-image" />
+        <img
+          src={gameData.stadium?.image || CreateGameImageTwo}
+          alt="Stadium"
+          className="confirmation-image"
+        />
       </div>
       <div className="confirmation-content">
         <h2>
@@ -74,7 +90,11 @@ const Confirmation = ({ gameData }) => {
         </h2>
         <p>
           {gameData.date
-            ? new Date(gameData.date).toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric' })
+            ? new Date(gameData.date).toLocaleDateString('en-US', {
+                weekday: 'long',
+                month: 'long',
+                day: 'numeric',
+              })
             : 'No Date Selected'}
         </p>
         <h1>{gameData.stadium?.name || 'Unknown Stadium'}</h1>
@@ -85,7 +105,8 @@ const Confirmation = ({ gameData }) => {
           Capacity: {gameData.stadium?.capacity || 'Unknown'}
         </p>
         <p>
-          Team Size: {gameData.stadium ? Math.floor(gameData.stadium.capacity / 2) : 'Unknown'}
+          Team Size:{' '}
+          {gameData.stadium ? Math.floor(gameData.stadium.capacity / 2) : 'Unknown'}
         </p>
         <div className="confirmation-buttons">
           <Button text="Go Back" onClick={() => dispatch(previousPhase())} />

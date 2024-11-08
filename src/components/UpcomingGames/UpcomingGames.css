@@ -34,12 +34,7 @@
     color: #FFF;
     font-family: 'Tomorrow', sans-serif;
   }
-  
-  .game-image {
-    width: 100%;
-    height: 120px;
-    object-fit: cover;
-  }
+
   
   .game-info {
     padding: 10px;

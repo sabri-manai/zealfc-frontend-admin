@@ -1,4 +1,3 @@
-// src/store/slices/levelSelectionSlice.js
 import { createSlice } from '@reduxjs/toolkit';
 
 export const levelSelectionSlice = createSlice({
@@ -10,8 +9,11 @@ export const levelSelectionSlice = createSlice({
     setSelectedLevel: (state, action) => {
       state.selectedLevel = action.payload;
     },
+    resetSelectedLevel: (state) => {
+      state.selectedLevel = null;
+    },
   },
 });
 
-export const { setSelectedLevel } = levelSelectionSlice.actions;
+export const { setSelectedLevel, resetSelectedLevel } = levelSelectionSlice.actions;
 export default levelSelectionSlice.reducer;

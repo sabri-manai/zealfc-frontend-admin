@@ -1,4 +1,3 @@
-// src/store/slices/slotSelectionSlice.js
 import { createSlice } from '@reduxjs/toolkit';
 
 export const slotSelectionSlice = createSlice({
@@ -10,8 +9,11 @@ export const slotSelectionSlice = createSlice({
     setSelectedSlot: (state, action) => {
       state.selectedSlot = action.payload;
     },
+    resetSelectedSlot: (state) => {
+      state.selectedSlot = null;
+    },
   },
 });
 
-export const { setSelectedSlot } = slotSelectionSlice.actions;
+export const { setSelectedSlot, resetSelectedSlot } = slotSelectionSlice.actions;
 export default slotSelectionSlice.reducer;

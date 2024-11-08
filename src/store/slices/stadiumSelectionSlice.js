@@ -1,4 +1,3 @@
-// src/store/slices/stadiumSelectionSlice.js
 import { createSlice } from '@reduxjs/toolkit';
 
 export const stadiumSelectionSlice = createSlice({
@@ -10,8 +9,11 @@ export const stadiumSelectionSlice = createSlice({
     setSelectedStadium: (state, action) => {
       state.selectedStadium = action.payload;
     },
+    resetSelectedStadium: (state) => {
+      state.selectedStadium = null;
+    },
   },
 });
 
-export const { setSelectedStadium } = stadiumSelectionSlice.actions;
+export const { setSelectedStadium, resetSelectedStadium } = stadiumSelectionSlice.actions;
 export default stadiumSelectionSlice.reducer;

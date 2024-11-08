@@ -3,7 +3,7 @@
 .admin-dashboard-container {
     background-color: #000d1c;
     min-height: 100vh;
-    padding: 20px;
+    padding-left: 20px;
     color: #00FF00;
     font-family: 'Tomorrow', sans-serif;
     display: flex;
