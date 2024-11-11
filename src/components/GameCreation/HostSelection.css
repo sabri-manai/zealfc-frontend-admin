@@ -1,0 +1,80 @@
+/* HostSelection.css */
+
+.host-selection-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 70px;
+    background-color: #000d1c;
+    min-height: 100vh;
+    color: #00FF00;
+    font-family: 'Tomorrow', sans-serif;
+  }
+  
+  .host-selection-title {
+    font-size: 3rem;
+    margin-bottom: 40px;
+    font-family: 'nyxerin', sans-serif;
+    color: #00FF00;
+  }
+  
+  .host-list {
+    list-style-type: none;
+    padding: 0;
+    width: 100%;
+    max-width: 600px;
+  }
+  
+  .host-item {
+    margin: 10px 0;
+    font-size: 1.2rem;
+    display: flex;
+    align-items: center;
+    color: #00FF00;
+  }
+  
+  .host-label {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    position: relative;
+    padding-left: 30px; /* Add space for custom radio */
+  }
+  
+  .host-label input[type="radio"] {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+  
+  .custom-radio {
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    height: 20px;
+    width: 20px;
+    background-color: transparent;
+    border: 2px solid #00FF00;
+    border-radius: 50%;
+  }
+  
+  .host-label input[type="radio"]:checked ~ .custom-radio {
+    background-color: #00FF00;
+  }
+  
+  .host-selection-buttons {
+    display: flex;
+    margin-top: 40px;
+  }
+  
+  .host-selection-buttons button {
+    margin: 0 10px;
+  }
+  

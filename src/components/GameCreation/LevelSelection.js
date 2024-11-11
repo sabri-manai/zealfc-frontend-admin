@@ -31,7 +31,7 @@ const LevelSelection = () => {
 
       <div className="level-buttons">
         <Button text="Go Back" onClick={() => dispatch(previousPhase())} />
-        <Button text="Create" onClick={() => dispatch(nextPhase())} />
+        <Button text="Next" onClick={() => dispatch(nextPhase())} />
       </div>
     </div>
   );

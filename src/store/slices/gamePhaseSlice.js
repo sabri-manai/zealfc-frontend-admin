@@ -1,13 +1,16 @@
+// src/store/slices/gamePhaseSlice.js
 import { createSlice } from '@reduxjs/toolkit';
 
 export const gamePhaseSlice = createSlice({
   name: 'gamePhase',
   initialState: {
-    phase: 1, // Assuming phase 1 is the initial phase
+    phase: 1,
   },
   reducers: {
     nextPhase: (state) => {
-      state.phase += 1;
+      if (state.phase < 6) {
+        state.phase += 1;
+      }
     },
     previousPhase: (state) => {
       if (state.phase > 1) {
@@ -21,4 +24,5 @@ export const gamePhaseSlice = createSlice({
 });
 
 export const { nextPhase, previousPhase, resetPhase } = gamePhaseSlice.actions;
+
 export default gamePhaseSlice.reducer;

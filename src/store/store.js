@@ -1,21 +1,21 @@
-// src/store/store.js
+// src/store/index.js
 import { configureStore } from '@reduxjs/toolkit';
-import dateSelectionReducer from './slices/dateSelectionSlice';
-import levelSelectionReducer from './slices/levelSelectionSlice';
-import slotSelectionReducer from './slices/slotSelectionSlice';
-import stadiumSelectionReducer from './slices/stadiumSelectionSlice';
-import stadiumReducer from './slices/stadiumSlice';
+import stadiumsReducer from './slices/stadiumSlice';
 import gamePhaseReducer from './slices/gamePhaseSlice';
+import stadiumSelectionReducer from './slices/stadiumSelectionSlice';
+import dateSelectionReducer from './slices/dateSelectionSlice';
+import slotSelectionReducer from './slices/slotSelectionSlice';
+import levelSelectionReducer from './slices/levelSelectionSlice';
+import hostSelectionReducer from './slices/hostSelectionSlice'; // Import hostSelectionSlice
 
-const store = configureStore({
+export default configureStore({
   reducer: {
-    dateSelection: dateSelectionReducer,
-    levelSelection: levelSelectionReducer,
-    slotSelection: slotSelectionReducer,
-    stadiumSelection: stadiumSelectionReducer,
-    stadiums: stadiumReducer,
+    stadiums: stadiumsReducer,
     gamePhase: gamePhaseReducer,
+    stadiumSelection: stadiumSelectionReducer,
+    dateSelection: dateSelectionReducer,
+    slotSelection: slotSelectionReducer,
+    levelSelection: levelSelectionReducer,
+    hostSelection: hostSelectionReducer, // Add to the store
   },
 });
-
-export default store;

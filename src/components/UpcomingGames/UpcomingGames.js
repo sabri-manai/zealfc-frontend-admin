@@ -3,10 +3,12 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import './UpcomingGames.css';
 import GameCard from '../GameCard/GameCard'; // Import the GameCard component
+import { useNavigate } from 'react-router-dom'; // Import useNavigate
 
 const UpcomingGames = () => {
   const [gamesByDate, setGamesByDate] = useState({});
   const [error, setError] = useState(null);
+  const navigate = useNavigate(); // Initialize navigate
 
   useEffect(() => {
     const fetchUpcomingGames = async () => {
@@ -45,17 +47,21 @@ const UpcomingGames = () => {
           <h3 className="date-header">{date}</h3>
           <div className="games-row">
             {gamesByDate[date].map((game) => (
-              <GameCard
+              <div
                 key={game._id}
-                imageSrc={game.stadium?.image}
-                name={game.stadium?.name}
-                subtitle={game.type}
-                dayOrDate={game.date}
-                timeOrCapacity={game.time}
-                id={game._id}
-                isGame={true}
                 className="game-card-wrapper"
-              />
+                onClick={() => navigate(`/manage-game/${game._id}`)}
+              >
+                <GameCard
+                  imageSrc={game.stadium?.image}
+                  name={game.stadium?.name}
+                  subtitle={game.type}
+                  dayOrDate={new Date(game.date).toLocaleDateString('en-US', { day: 'numeric', month: 'short' })}
+                  timeOrCapacity={game.time}
+                  id={game._id}
+                  isGame={true}
+                />
+              </div>
             ))}
           </div>
         </div>

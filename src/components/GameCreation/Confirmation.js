@@ -1,6 +1,6 @@
 // src/components/GameCreation/Confirmation.js
 import React from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { previousPhase, resetPhase } from '../../store/slices/gamePhaseSlice';
@@ -8,6 +8,7 @@ import { resetSelectedStadium } from '../../store/slices/stadiumSelectionSlice';
 import { resetSelectedDate } from '../../store/slices/dateSelectionSlice';
 import { resetSelectedSlot } from '../../store/slices/slotSelectionSlice';
 import { resetSelectedLevel } from '../../store/slices/levelSelectionSlice';
+import { resetSelectedHost } from '../../store/slices/hostSelectionSlice'; // Import resetSelectedHost
 import './Confirmation.css';
 import Button from '../../components/Button/Button';
 import CreateGameImageTwo from '../../assets/images/turia.png';
@@ -15,6 +16,8 @@ import CreateGameImageTwo from '../../assets/images/turia.png';
 const Confirmation = ({ gameData }) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+
+  const selectedHost = useSelector((state) => state.hostSelection.selectedHost);
 
   const calculateDuration = (startTime, endTime) => {
     const start = new Date(`1970-01-01T${startTime}:00`);
@@ -26,14 +29,18 @@ const Confirmation = ({ gameData }) => {
   const handleConfirm = async () => {
     const duration = calculateDuration(gameData.slot.startTime, gameData.slot.endTime);
 
+    if (!selectedHost) {
+      alert('No host selected.');
+      return;
+    }
+
     const dataToSubmit = {
       stadiumId: gameData.stadium._id,
-      host: gameData.stadium.hosts[0],
+      hostId: selectedHost._id,
       date: gameData.date,
       time: gameData.slot.startTime,
       duration: duration,
       type: gameData.level,
-      result: null,
     };
 
     const idToken = localStorage.getItem('idToken');
@@ -60,6 +67,7 @@ const Confirmation = ({ gameData }) => {
       dispatch(resetSelectedDate());
       dispatch(resetSelectedSlot());
       dispatch(resetSelectedLevel());
+      dispatch(resetSelectedHost()); // Reset selected host
       dispatch(resetPhase());
 
       navigate("/dashboard");
@@ -99,6 +107,9 @@ const Confirmation = ({ gameData }) => {
         </p>
         <h1>{gameData.stadium?.name || 'Unknown Stadium'}</h1>
         <p>{gameData.level || 'No Level Selected'}</p>
+        <p>
+          Host: {selectedHost ? `${selectedHost.first_name} ${selectedHost.last_name}` : 'No Host Selected'}
+        </p>
         <p>
           {gameData.stadium?.address || 'Unknown Address'}
           <br />
