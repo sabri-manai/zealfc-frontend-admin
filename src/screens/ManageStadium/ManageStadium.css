@@ -34,12 +34,28 @@
   width: 100%;
 }
 
+.form-group li {
+  margin-bottom: 30px;
+}
+
 .manage-stadium-container label {
   font-size: 1rem;
   color: #1bc429;
   font-weight: 400;
   text-transform: uppercase;
   margin-bottom: 5px;
+}
+
+.custom-radio {
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  height: 20px;
+  width: 20px;
+  background-color: transparent;
+  border: 2px solid #00FF00;
+  border-radius: 50%;
 }
 
 .manage-stadium-container input,
@@ -90,27 +106,8 @@
   cursor: pointer;
 }
 
-
-.button-container {
-  display: flex;
-  justify-content: center;
-  margin-top: 20px;
-}
-
-.manage-stadium-container button {
-  background: #1bc429;
-  color: #000d1c;
-  border: none;
-  border-radius: 10px;
-  padding: 10px 20px;
-  font-size: 1rem;
-  font-weight: 500;
-  cursor: pointer;
-  transition: background-color 0.3s ease, color 0.3s ease;
-}
-
-.manage-stadium-container button:hover {
-  background: #28a745;
+.form-navigation {
+    display: flex;
 }
 
 /* Responsive styling for smaller screens */

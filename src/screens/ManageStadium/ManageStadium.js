@@ -266,6 +266,7 @@ function ManageStadium() {
                       onChange={handleAmenitiesChange}
                     />
                     {amenity}
+                    {/* <span className="custom-radio"></span> */}
                   </label>
                 ))}
               </fieldset>
