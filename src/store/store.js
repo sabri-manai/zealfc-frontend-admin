@@ -7,6 +7,7 @@ import dateSelectionReducer from './slices/dateSelectionSlice';
 import slotSelectionReducer from './slices/slotSelectionSlice';
 import levelSelectionReducer from './slices/levelSelectionSlice';
 import hostSelectionReducer from './slices/hostSelectionSlice'; // Import hostSelectionSlice
+import gameReducer from './slices/gameSlice';
 
 export default configureStore({
   reducer: {
@@ -16,6 +17,8 @@ export default configureStore({
     dateSelection: dateSelectionReducer,
     slotSelection: slotSelectionReducer,
     levelSelection: levelSelectionReducer,
-    hostSelection: hostSelectionReducer, // Add to the store
+    hostSelection: hostSelectionReducer,
+    game: gameReducer,
+
   },
 });

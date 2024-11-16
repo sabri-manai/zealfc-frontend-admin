@@ -1,39 +1,34 @@
 // src/components/ManageGame/ManageGame.js
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
-import { useParams } from 'react-router-dom';
+import React, { useEffect } from 'react';
+import { useParams, useNavigate } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
 import GameDetails from './GameDetails';
 import PlayerList from './PlayerList';
 import GameStats from './GameStats';
+import { fetchGame, setPhase } from '../../store/slices/gameSlice';
 import './ManageGame.css';
 
 const ManageGame = () => {
   const { gameId } = useParams();
-  const [game, setGame] = useState(null);
-  const [phase, setPhase] = useState(1);
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+
+  const { game, phase, loading } = useSelector((state) => state.game);
 
   useEffect(() => {
-    const fetchGame = async () => {
-      try {
-        const response = await axios.get(`${process.env.REACT_APP_API_URL}/games/${gameId}`);
-        setGame(response.data);
-      } catch (error) {
-        console.error('Error fetching game:', error);
-      }
-    };
-    fetchGame();
-  }, [gameId]);
+    dispatch(fetchGame(gameId));
+  }, [dispatch, gameId]);
 
-  if (!game) return <div>Loading...</div>;
+  if (loading || !game) return <div>Loading...</div>;
 
   const handleStart = () => {
-    setPhase((prevPhase) => prevPhase + 1);
+    dispatch(setPhase(phase + 1));
   };
 
   const handleFinish = () => {
-    // Implement finish logic here
-    alert('Game has been finished!');
-    // Redirect or update UI as needed
+    // Handle post-game actions, e.g., navigate away or reset phase
+    dispatch(setPhase(1));
+    navigate('/'); // Navigate to desired route
   };
 
   return (
@@ -41,22 +36,15 @@ const ManageGame = () => {
       {phase === 1 && (
         <>
           <GameDetails game={game} onStart={handleStart} />
-          <PlayerList teams={game.teams} phase={phase} />
+          <PlayerList />
         </>
       )}
       {phase === 2 && (
         <>
-          <PlayerList teams={game.teams} phase={phase} onStart={handleStart} />
+          <PlayerList onStart={handleStart} />
         </>
       )}
-      {phase === 3 && (
-        <GameStats
-          teams={game.teams}
-          duration={game.duration}
-          gameId={game._id}
-          onFinish={handleFinish}
-        />
-      )}
+      {phase === 3 && <GameStats onFinish={handleFinish} />}
     </div>
   );
 };

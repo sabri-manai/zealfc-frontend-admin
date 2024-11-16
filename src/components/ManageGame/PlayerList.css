@@ -1,0 +1,186 @@
+/* Main container for the player lists */
+.player-list-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: #39ff14;
+    font-family: 'Tomorrow', sans-serif;
+    padding: 20px 20px 40px; /* Add bottom padding for space around the button */
+    width: 100%;
+    max-width: 900px;
+    margin: 0 auto;
+    position: relative;
+  }
+  
+  /* Score counter styling */
+  .score-counter {
+    font-size: 2.5em;
+    font-weight: bold;
+    color: #39ff14;
+    text-align: center;
+    margin-bottom: 20px;
+    padding-top: 80px; /* Add top padding to separate from the top */
+  }
+  
+  .score {
+    font-size: 2.5em;
+  }
+  
+  /* Wrapper for each team list and the vertical divider line */
+  .player-lists {
+    display: flex;
+    width: 100%;
+    justify-content: space-around;
+    position: relative;
+    padding-top: 30px; /* Add padding above the teams to avoid cutting into the score */
+    padding-bottom: 30px; /* Add padding below the teams to avoid cutting into the button */
+  }
+  
+  /* Vertical divider line */
+  .player-lists::before {
+    content: '';
+    position: absolute;
+    width: 1px;
+    height: 100%;
+    background-color: #39ff14;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1;
+  }
+  
+  .team-list {
+    width: 45%;
+    padding: 20px;
+    box-sizing: border-box;
+  }
+  
+  /* Team title */
+  .team-title {
+    font-size: 1.8em;
+    font-weight: bold;
+    text-align: center;
+    color: #39ff14;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+  }
+  
+  /* Player list styling */
+  .players {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .player-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 0;
+    font-size: 1em;
+    color: #39ff14;
+  }
+  
+  .player-rank {
+    font-weight: bold;
+    margin-right: 10px;
+  }
+  
+  .player-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-right: 10px;
+  }
+  
+  .player-name {
+    flex-grow: 1;
+    font-weight: 400;
+  }
+  
+  /* Styling for empty slot text */
+  .empty-slot {
+    color: #6a6a6a;
+    font-style: italic;
+  }
+  
+  /* Attendance icons for phase 2 */
+  .attendance-icons {
+    display: flex;
+    gap: 10px;
+  }
+  
+  .attendance-icon {
+    font-size: 1.2em;
+    cursor: pointer;
+    color: yellow; /* Default color for neutral state */
+    transition: transform 0.2s, color 0.2s;
+  }
+  
+  .attendance-icon.present {
+    color: #39ff14; /* Green for present */
+  }
+  
+  .attendance-icon.absent {
+    color: red; /* Red for absent */
+  }
+  
+  .attendance-icon.late {
+    color: yellow; /* Yellow for late */
+  }
+  
+  .attendance-icon:hover {
+    transform: scale(1.2);
+  }
+  
+  /* Start button styling */
+  .start-button {
+    padding: 10px 20px;
+    font-size: 1em;
+    color: #39ff14;
+    background-color: transparent;
+    border: 2px solid #39ff14;
+    border-radius: 5px;
+    cursor: pointer;
+    text-transform: uppercase;
+    font-family: 'Tomorrow', sans-serif;
+    margin-top: 20px;
+    transition: all 0.3s ease;
+  }
+  
+  .start-button:hover {
+    color: #0d0f13;
+    background-color: #39ff14;
+    box-shadow: 0px 0px 10px #39ff14, 0px 0px 20px #39ff14;
+  }
+  
+  /* Responsive styling */
+  @media (max-width: 768px) {
+    .player-lists {
+      flex-direction: column;
+      align-items: center;
+    }
+  
+    .team-list {
+      width: 80%;
+      margin-bottom: 20px;
+    }
+  
+    .start-button {
+      width: 100%;
+    }
+  
+    .player-avatar {
+      width: 30px;
+      height: 30px;
+    }
+  
+    .player-item {
+      font-size: 0.9em;
+    }
+  
+    /* Remove the divider line on small screens */
+    .player-lists::before {
+      display: none;
+    }
+  }
+  

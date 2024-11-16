@@ -1,0 +1,136 @@
+/* Main container for the game stats */
+.game-stats-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: #39ff14;
+    font-family: 'Tomorrow', sans-serif;
+    width: 100%;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 20px;
+    padding-top: 80px;
+    position: relative;
+}
+
+/* Header with timer and scoreboard */
+.game-stats-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 20px;
+    padding: 0 10%;
+}
+
+.timer {
+    font-size: 1.2em;
+    color: #39ff14;
+}
+
+.scoreboard {
+    font-size: 3em;
+    font-weight: bold;
+    text-align: center;
+    color: #39ff14;
+}
+
+/* Divider line between teams */
+.player-lists {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    position: relative;
+}
+
+.player-lists::after {
+    content: '';
+    position: absolute;
+    width: 1px;
+    height: 100%;
+    background-color: #39ff14;
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+/* Team list styling */
+.team-list {
+    width: 45%;
+}
+
+.team-list h2 {
+    font-size: 1.8em;
+    text-align: center;
+    color: #39ff14;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+}
+
+/* Player item styling */
+.player-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 0;
+    font-size: 1em;
+    color: #39ff14;
+}
+
+.player-item span {
+    font-weight: bold;
+}
+
+.player-item img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+/* Stats buttons for goal and assist */
+.stats-buttons {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.stats-buttons button {
+    background: transparent;
+    border: none;
+    color: #39ff14;
+    font-size: 1.2em;
+    cursor: pointer;
+}
+
+.stats-buttons .goal-icon {
+    color: #39ff14;
+}
+
+.stats-buttons .assist-icon {
+    color: yellow;
+}
+
+.stats-buttons span {
+    font-size: 1.2em;
+    font-weight: bold;
+}
+
+/* Responsive styling */
+@media (max-width: 768px) {
+    .game-stats-header {
+        flex-direction: column;
+        align-items: center;
+        padding: 0;
+    }
+
+    .player-lists {
+        flex-direction: column;
+    }
+
+    .team-list {
+        width: 100%;
+        margin-bottom: 20px;
+    }
+}
